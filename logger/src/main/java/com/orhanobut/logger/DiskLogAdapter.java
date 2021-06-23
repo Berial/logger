@@ -1,5 +1,7 @@
 package com.orhanobut.logger;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -13,8 +15,8 @@ public class DiskLogAdapter implements LogAdapter {
 
   @NonNull private final FormatStrategy formatStrategy;
 
-  public DiskLogAdapter() {
-    formatStrategy = CsvFormatStrategy.newBuilder().build();
+  public DiskLogAdapter(Context context) {
+    formatStrategy = CsvFormatStrategy.newBuilder(context).build();
   }
 
   public DiskLogAdapter(@NonNull FormatStrategy formatStrategy) {

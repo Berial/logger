@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
       }
     });
 
-    Logger.addLogAdapter(new DiskLogAdapter());
+    Logger.addLogAdapter(new DiskLogAdapter(this));
 
 
     Logger.w("no thread info and only 1 method");

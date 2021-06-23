@@ -1,8 +1,9 @@
 package com.orhanobut.logger;
 
-import android.os.Environment;
+import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -38,8 +39,8 @@ public class CsvFormatStrategy implements FormatStrategy {
     tag = builder.tag;
   }
 
-  @NonNull public static Builder newBuilder() {
-    return new Builder();
+  @NonNull public static Builder newBuilder(Context context) {
+    return new Builder(context);
   }
 
   @Override public void log(int priority, @Nullable String onceOnlyTag, @NonNull String message) {
@@ -94,8 +95,10 @@ public class CsvFormatStrategy implements FormatStrategy {
     SimpleDateFormat dateFormat;
     LogStrategy logStrategy;
     String tag = "PRETTY_LOGGER";
+    Context context;
 
-    private Builder() {
+    private Builder(Context context) {
+      this.context = context;
     }
 
     @NonNull public Builder date(@Nullable Date val) {
@@ -126,7 +129,7 @@ public class CsvFormatStrategy implements FormatStrategy {
         dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss.SSS", Locale.UK);
       }
       if (logStrategy == null) {
-        String diskPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        String diskPath = context.getExternalFilesDir(null).getAbsolutePath();
         String folder = diskPath + File.separatorChar + "logger";
 
         HandlerThread ht = new HandlerThread("AndroidFileLogger." + folder);
