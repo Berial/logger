@@ -10,11 +10,11 @@ Simple, pretty and powerful logger for android
 Download
 ```groovy
 allprojects {
-		repositories {
-			...
-			maven { url 'https://www.jitpack.io' }
-		}
-	}
+    repositories {
+	...
+	maven { url 'https://www.jitpack.io' }
+    }
+}
 ```
 
 ```groovy
