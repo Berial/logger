@@ -9,7 +9,16 @@ Simple, pretty and powerful logger for android
 ### Setup
 Download
 ```groovy
-implementation 'com.orhanobut:logger:2.2.0'
+allprojects {
+		repositories {
+			...
+			maven { url 'https://www.jitpack.io' }
+		}
+	}
+```
+
+```groovy
+implementation 'com.github.Berial:logger:2.3.0'
 ```
 
 Initialize
